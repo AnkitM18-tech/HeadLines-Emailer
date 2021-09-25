@@ -35,9 +35,9 @@ print("Composing EMail...")
 # update email details
 SERVER = 'smtp.gmail.com'
 PORT = 587
-FROM = os.environ.get('EMAIL_USER')
-TO = os.environ.get('EMAIL_USER')
-PASSWORD = os.environ.get('EMAIL_PASS')
+FROM = os.environ.get('EMAIL_USER')    #Email Id Sender
+TO = os.environ.get('EMAIL_USER')      #Email Id Receiver
+PASSWORD = os.environ.get('EMAIL_PASS')   #Password of your Id
 
 #Create text/plain msg
 msg = MIMEMultipart()
@@ -51,7 +51,7 @@ msg.attach(MIMEText(content, 'html'))
 #Initiating Server
 print("Initiating Server...")
 server = smtplib.SMTP(SERVER,PORT)
-server.set_debuglevel(0)
+server.set_debuglevel(0)     #If interested in seeing the debug messages set to 1.
 server.ehlo()
 server.starttls()  
 server.login(FROM,PASSWORD)
